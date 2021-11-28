@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Touchscreen.current.primaryTouch.press.isPressed)
         {
-            Vector3 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue(); // elegxos patimatos tis o8onis
+            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue(); // elegxos patimatos tis o8onis
 
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(touchPosition); // metatroph twn syntetagmenwn apo tn analysh tis o8onis stis syntetagmenes toy world Unity.
             Debug.Log(worldPosition);
