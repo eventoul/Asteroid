@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float forceMagnitude;
     [SerializeField] private float maxVelocity;
+    [SerializeField] private float speesRotation;
     
     private Camera mainCamera;
     private Rigidbody rb;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         TouchToMove();
         KeepPlayerOnScreen();
+        RotateToFaceVelocity();
     }
 
     private void FixedUpdate()
@@ -98,5 +100,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position = newPosition;
+    }
+    
+    /*
+     *  me8odos gia na peristafei to aerplano pros ta ekei pou paei
+     */
+    private void RotateToFaceVelocity()
+    {
+        if (rb.velocity == Vector3.zero) // gia na min to peristrepsi otan ksekinaei kai den exei taxythta.
+        {
+            return;
+        }
+        
+        Quaternion targetRotation = Quaternion.LookRotation(rb.velocity, Vector3.back);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speesRotation * Time.deltaTime); // gia pio smooth strofi analoga me tin taxythta toy rotation
     }
 }
