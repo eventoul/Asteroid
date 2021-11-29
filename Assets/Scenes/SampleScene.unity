@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMagnitude: 150
-  maxVelocity: 4
+  maxVelocity: 5
+  speesRotation: 5
 --- !u!54 &203689929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -486,7 +487,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.95e-43, y: 1.39e-43, z: 0, w: 0.000000008798928}
+  m_BoundingSphereOverride: {x: 1, y: 1, z: 1, w: 1}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
