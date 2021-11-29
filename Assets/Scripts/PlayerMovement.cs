@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
+         *  arxikopoihsh twn metablitwn me ta antikeimena tou project.
+         */
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         TouchToMove();
+        KeepPlayerOnScreen();
     }
 
     private void FixedUpdate()
@@ -32,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
         ForceToMove();
     }
 
+    /*
+     *  metakinisi toy aeroplano stin o8oni analoga me to agkigma.
+     */
     private void TouchToMove()
     {
         if (Touchscreen.current.primaryTouch.press.isPressed)
@@ -50,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    /*
+     *  efarmofi tis epitaxynsis sto aeroplano.
+     */
     private void ForceToMove()
     {
         if (movementDirection == Vector3.zero)
@@ -62,4 +72,31 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxVelocity);
     } 
     
+    /*
+     *  me8odos gia tin metafora toy aeroplano stin o8oni etsi wste na emfanizetai panta mesa s' ayth.
+     */
+    private void KeepPlayerOnScreen()
+    {
+        Vector3 newPosition = transform.position;
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
+
+        if (viewportPosition.x > 1)
+        {
+            newPosition.x = -newPosition.x + 0.1f;
+        }
+        else if (viewportPosition.x < 0)
+        {
+            newPosition.x = -newPosition.x - 0.1f;
+        }
+        else if (viewportPosition.y > 1)
+        {
+            newPosition.y = -newPosition.y + 0.1f;
+        }
+        else if (viewportPosition.y < 0)
+        {
+            newPosition.y = -newPosition.y - 0.1f;
+        }
+
+        transform.position = newPosition;
+    }
 }
