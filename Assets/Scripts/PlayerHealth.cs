@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     {
         gameObject.SetActive(false); // apenergopoihsh toy gameobejct.
 
-        Invoke(nameof(LoadGameOverScene), 1f); // kalei tin methodo meta apo 1 sec
+        Invoke(nameof(LoadGameOverScene), 0.5f); // kalei tin methodo meta apo 1 sec
     }
 
     private void LoadGameOverScene()
