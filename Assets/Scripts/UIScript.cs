@@ -17,9 +17,4 @@ public class UIScript : MonoBehaviour
     {
         SceneManager.LoadScene(MENU_SCENE);
     }
-
-    public void GameOverScene()
-    {
-        SceneManager.LoadScene("GameOver");
-    }
 }
