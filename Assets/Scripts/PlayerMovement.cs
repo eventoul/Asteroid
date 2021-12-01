@@ -75,12 +75,26 @@ public class PlayerMovement : MonoBehaviour
     } 
     
     /*
+     *  me8odos gia na peristafei to aerplano pros ta ekei pou paei
+     */
+    private void RotateToFaceVelocity()
+    {
+        if (rb.velocity == Vector3.zero) // gia na min to peristrepsi otan ksekinaei kai den exei taxythta.
+        {
+            return;
+        }
+        
+        Quaternion targetRotation = Quaternion.LookRotation(rb.velocity, Vector3.back);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speesRotation * Time.deltaTime); // gia pio smooth strofi analoga me tin taxythta toy rotation
+    }
+    
+    /*
      *  me8odos gia tin metafora toy aeroplano stin o8oni etsi wste na emfanizetai panta mesa s' ayth.
      */
     private void KeepPlayerOnScreen()
     {
         Vector3 newPosition = transform.position;
-        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(newPosition);
 
         if (viewportPosition.x > 1)
         {
@@ -102,17 +116,5 @@ public class PlayerMovement : MonoBehaviour
         transform.position = newPosition;
     }
     
-    /*
-     *  me8odos gia na peristafei to aerplano pros ta ekei pou paei
-     */
-    private void RotateToFaceVelocity()
-    {
-        if (rb.velocity == Vector3.zero) // gia na min to peristrepsi otan ksekinaei kai den exei taxythta.
-        {
-            return;
-        }
-        
-        Quaternion targetRotation = Quaternion.LookRotation(rb.velocity, Vector3.back);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speesRotation * Time.deltaTime); // gia pio smooth strofi analoga me tin taxythta toy rotation
-    }
+    
 }
