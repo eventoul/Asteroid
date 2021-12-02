@@ -1,2 +1,2 @@
 # Asteroid
- 2D game. Plane with asteroids.
+A space craft which avoid asteroids.
