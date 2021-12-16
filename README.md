@@ -1,2 +1,2 @@
 # Asteroid
-A space craft which avoid asteroids.
+A game with a spacecraft that avoids asteroids.
