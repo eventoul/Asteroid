@@ -1,2 +1,2 @@
 # Asteroid
-A game with a spacecraft that avoids asteroids.
+The scope of the game is to avoid the asteroids.
